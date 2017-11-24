@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Filterable Contact</title>
+
+  <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <style>
+      .container{
+        width:55%;
+      }
+      h1{
+        text-align: center; 
+        color:rgb(7, 7, 104); 
+        font-size:350%;
+      }
+      
+    </style>
+</head>
+
+<body>
+  <div class="container" style="width:55%">
+    <h1 id="heading" >
+      Filterable Contacts
+    </h1>
+    <div class="form-group">
+      <input type="text" class="form-control" id="search" placeholder="Search">
+    </div>
+
+    <div class="contactList">
+      <ul id="alphabet" class="list-group">
+        <li class="list-group-item active">A</li>
+        <a class="list-group-item" href="#">Alexander</a>
+        <a class="list-group-item" href="#">Azay</a>
+        <a class="list-group-item" href="#">Anthony</a>
+        <a class="list-group-item" href="#">Alex</a>
+        <a class="list-group-item" href="#">Arbert</a>
+        <a class="list-group-item" href="#">Allissa</a>
+      
+
+      
+        <li class="list-group-item active">B</li>
+        <a class="list-group-item" href="#">Booss</a>
+        <a class="list-group-item" href="#">Bob</a>
+        <a class="list-group-item" href="#">Bathew</a>
+        <a class="list-group-item" href="#">Ben</a>
+        <a class="list-group-item" href="#">Bigg</a>
+      
+
+      
+        <li class="list-group-item active">C</li>
+        <a class="list-group-item" href="#">Catho</a>
+        <a class="list-group-item" href="#">Cassy</a>
+        <a class="list-group-item" href="#">Camert</a>
+      </ul>
+
+      
+    </div>
+
+    </div>
+  </div>
+  
+  <script>
+    //activating event
+    document.getElementById("search").addEventListener("keyup", filterContact);
+
+    function filterContact()
+    {
+      var inputValue=document.getElementById("search").value.toUpperCase(); //cant be outside, input should be after keyup event not before hand.
+      
+      //taking ul items
+      var ulItem= document.getElementsByClassName("list-group");//stores as an array
+      
+      //loop through each items in array
+      for(let i=0; i<ulItem.length; i++)
+      {
+        //creating array that stores the multiple anchors tags of ul but not li
+        let a=[];  
+        a= ulItem[i].getElementsByTagName("a"); //stores anchor tag (not its value)in array
+
+        //looping through each anchor tag
+        for(let j=0; j<a.length; j++)
+        {
+          //checking if any of character of anchor matches inputValue
+          if((a[j].innerHTML.toUpperCase().indexOf(inputValue)>-1))  //consistency in uppercase  
+            a[j].style.display="";   //if matches, do nothing
+          else
+            a[j].style.display="none";  //if matches, removes completely*/
+        }
+      }
+    }
+    
+  </script>
+</body>
+</html>
